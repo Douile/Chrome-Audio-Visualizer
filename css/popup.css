@@ -1,0 +1,52 @@
+body {
+  width: 400px;
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  animation: background 10s ease infinite running alternate;
+  overflow: hidden;
+}
+.wrapper {
+  position: absolute;
+  display: block;
+  left: 10px;
+  top: 15px;
+  width: 380px;
+  height: 185px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: none;
+  opacity: 0;
+  transition: .5s ease opacity;
+}
+.wrapperTopper {
+  display: inline-block;
+  height: 10px;
+  margin-left: 10px;
+  font-size: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+body[tab="visualizer"] > #visualizer,body[tab="settings"] > #settings,body[tab="chooseTab"] > #chooseTab {
+  opacity: 1;
+  pointer-events: all;
+}
+body[tab="visualizer"] > .wrapperTopper[tab="visualizer"],body[tab="settings"] > .wrapperTopper[tab="settings"],body[tab="chooseTab"] > .wrapperTopper[tab="chooseTab"] {
+  text-decoration: underline;
+}
+canvas {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes background {
+  from {background-color: #1b1a1b}
+  to {background-color: #cacbca}
+}
+* {
+  box-sizing: border-box;
+}
