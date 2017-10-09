@@ -4,7 +4,7 @@
 	"version": "1.11",
 	"version_name": "Alpha 11",
 	"description": "An audio visualizer for online music streaming.",
-	"author": "Tom",
+	"author": "Douile",
 	"icons": {
 		"16": "icon16.png",
 		"48": "icon48.png",
