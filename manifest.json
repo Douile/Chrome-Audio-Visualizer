@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "Audio Visualizer",
+	"version": "1.11",
+	"version_name": "Alpha 11",
+	"description": "An audio visualizer for online music streaming.",
+	"author": "Tom",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"permissions": [
+		"storage",
+		"tabs",
+		"tabCapture",
+		"activeTab",
+		"*://*/*"
+	],
+	"browser_action": {
+		"default_icon": {
+			"128": "icon128.png"
+		},
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": ["/js/background.js"]
+	}
+}
