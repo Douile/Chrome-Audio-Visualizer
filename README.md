@@ -7,6 +7,6 @@ A chrome extension to provide audio visualization for all audio sources in the b
 
 ---
 
-Find on the chrome web store [here](https://chrome.google.com/webstore/detail/audio-visualizer/caajjjkijcgmagpdjgadkodpgnmajcej)
+Find on the chrome web store [here](https://goo.gl/Xx4vje)
 
 - Thanks for helping out!
