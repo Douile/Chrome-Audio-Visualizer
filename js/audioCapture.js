@@ -4,11 +4,22 @@ var audioCapture = {
     this.audioContext = new AudioContext();
     this.audioStream = this.audioContext.createMediaStreamSource(this.capture);
     this.audioAnalyser = this.audioContext.createAnalyser();
+    this.audioAnalyser.fftSize = 1024;
 
     this.audioStream.connect(this.audioContext.destination);
     this.audioStream.connect(this.audioAnalyser);
 
-    this.prototype.close = function() {
+    this.data = {
+      bufferSize: this.audioAnalyser.frequencyBinCount
+    }
+    this.data.frequencyData = new Uint8Array(this.data.bufferSize);
+    this.data.timeData = new Uint8Array(this.data.bufferSize);
+
+    this.update = function() {
+      this.audioAnalyser.getByteFrequencyData(this.data.frequencyData);
+      this.audioAnalyser.getByteTimeDomainData(this.data.timeData);
+    }
+    this.close = function() {
       streams = this.capture.getAudioTracks();
       for (i=0;i<streams.length;i++) {
         streams[i].stop();

@@ -28,7 +28,7 @@ var popup = {
       popup.showCapture();
       console.log(popup.tabCapture);
     })*/
-    popup.stream = chrome.runtime.connect();
+    /*popup.stream = chrome.runtime.connect();
     popup.stream.postMessage("stream+request");
     popup.stream.onMessage.addListener(function(message) {
       console.log(message);
@@ -39,31 +39,43 @@ var popup = {
     popup.stream.onDisconnect.addListener(function() {
       popup.stream = undefined;
     })
-    popup.stream.postMessage("update");
-    popup.showCapture();
+    popup.stream.postMessage("update");*/
+    audioCapture.captures.onAdd.addListener(function(a) {
+      popup.audioObject = a.object;
+      popup.showCapture();
+    })
+    audioCapture.startCapture();
   },
   stopCapture: function() {
     popup.tabCapture.stop = true;
 
   },
+  showCaptured: function() {
+    chrome.runtime.sendMessage("streamupdate",function(out) {
+      console.log(out);
+      popup.showCapture();
+    })
+  },
   showCapture: function() {
-    if (popup.tabCapture.stop == false) {
-      var frame = requestAnimationFrame(popup.showCapture);
-    }
+    var frame = requestAnimationFrame(popup.showCapture);
 
-    popup.stream.postMessage("update");
+    popup.audioObject.update();
+    var bufferLength = popup.audioObject.data.bufferSize;
+    var freqData = popup.audioObject.data.frequencyData;
+    var timeData = popup.audioObject.data.timeData;
 
     popup.canvas.ctx.clearRect(0,0,popup.canvas.width,popup.canvas.height);
 
     popup.canvas.ctx.fillStyle = 'rgb(0,0,0)';
     //popup.canvas.ctx.fillRect(0,0,popup.canvas.width,popup.canvas.height);
 
-    var barWidth = (popup.canvas.width / 100) * 2.5;
+    var barWidth = (popup.canvas.width / bufferLength) * 2.5;
     var barHeight;
     var x = 0;
     var average = 0;
-    for (var i=0;i<popup.tabCapture.bufferLength;i++) {
-      average += popup.tabCapture.freqData[i];
+    /*
+    for (var i=0;i<bufferLength;i++) {
+      average += freqData[i];
       if (i % 5 == 0) {
         barHeight = Math.round(average/5);
         average = 0;
@@ -73,12 +85,20 @@ var popup = {
 
         x += barWidth + 5;
       }
+    }*/
+    for (var i=1;i<bufferLength;i++) {
+      barHeight = Math.round(freqData[i]/5);
+      popup.canvas.ctx.fillStyle = "rgb(" + (barHeight+100) + "," + (255-barHeight) + ",50)";
+      barHeight = popup.canvas.height*(barHeight/250)*1.5
+      popup.canvas.ctx.fillRect(x,popup.canvas.height-barHeight/2,barWidth,barHeight);
+
+      x += barWidth + 5;
     }
     popup.canvas.ctx.lineWidth = 10;
     popup.canvas.ctx.strokeStyle = "rgb(255,255,255)";
     popup.canvas.ctx.beginPath();
-    for (var a = popup.canvas.width / popup.tabCapture.bufferLength, b = 0, f = 0; f < popup.tabCapture.bufferLength; f++) {
-        var l = popup.tabCapture.timeData[f] / 128 * 1024 / 2;
+    for (var a = popup.canvas.width / bufferLength, b = 0, f = 0; f < bufferLength; f++) {
+        var l = timeData[f] / 128 * 1024 / 2;
         0 === f ? popup.canvas.ctx.moveTo(b, l) : popup.canvas.ctx.lineTo(b, l);
         b += a
     }
@@ -92,3 +112,7 @@ var popup = {
 
 popup.init();
 popup.startCapture();
+
+
+//var test = {audio:undefined};
+//chrome.tabCapture.capture({audio:true,video:false},function(audio) {test.audio = audio});
