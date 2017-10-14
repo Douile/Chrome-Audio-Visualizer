@@ -1,6 +1,7 @@
 ---
 title: Chrome Audio Visualizer Home
 layout: Default
+permalink: /index.html
 ---
 
 # [![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
