@@ -1,5 +1,6 @@
 ---
 title: Home
+layout: post
 permalink: /index.html
 ---
 
