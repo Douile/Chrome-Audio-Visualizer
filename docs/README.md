@@ -1,5 +1,5 @@
 
-# [![logo](/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
+# [![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
@@ -13,18 +13,18 @@ Find on the chrome web store [here](https://goo.gl/Xx4vje)
 
 ---
 
-[![screenshot](/GIT/audioVisScreen2.png)](https://goo.gl/Xx4vje)
+[![screenshot](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/GIT/audioVisScreen2.png)](https://goo.gl/Xx4vje)
 
 # [Installation](#installation)
 
 Installation is easy.
-* Go to the [chrome webstore](https://goo.gl/Xx4vje) and press [![Add to Chrome](/GIT/addToChrome.png)](https://goo.gl/Xx4vje)
+* Go to the [chrome webstore](https://goo.gl/Xx4vje) and press [![Add to Chrome](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/GIT/addToChrome.png)](https://goo.gl/Xx4vje)
 * Developer Mode
   1. Download source code 
   2. Open [chrome extensions](chrome://extensions).
   3. Enable developer mode
   4. Click load unpacked extension
-  5. Select the folder containing [manifest.json](/manifest.json)
+  5. Select the folder containing [manifest.json](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/manifest.json)
   
 # [Usage](#usage)
 How to use the extension.
