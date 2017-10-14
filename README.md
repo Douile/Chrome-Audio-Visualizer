@@ -42,3 +42,7 @@ It would be great if you would like to help! You can do so by:
 4. [Rating on the play store](https://chrome.google.com/webstore/detail/audio-visualizer/caajjjkijcgmagpdjgadkodpgnmajcej/reviews)
 5. [Contributing to the wiki](https://github.com/Douile/Chrome-Audio-Visualizer/wiki/_new)
 6. Enjoying this extension
+
+---
+
+[Github.io](https://douile.github.io/Chrome-Audio-Visualizer/)
