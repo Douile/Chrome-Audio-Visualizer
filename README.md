@@ -1,6 +1,5 @@
-![logo](/icon48.png)
 
-# ![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon128.png) Chrome Audio Visualizer
+# ![logo](/icon48.png) Chrome Audio Visualizer
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
