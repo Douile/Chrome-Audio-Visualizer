@@ -1,5 +1,5 @@
 ---
-title: Chrome Audio Visualizer Home
+title: Home
 layout: Post
 permalink: /index.html
 ---
