@@ -89,7 +89,7 @@ var popup = {
     for (var i=1;i<bufferLength;i++) {
       barHeight = Math.round(freqData[i]/5);
       popup.canvas.ctx.fillStyle = "rgb(" + (barHeight+100) + "," + (255-barHeight) + ",50)";
-      barHeight = popup.canvas.height*(barHeight/250)*1.5
+      barHeight = popup.canvas.height*(barHeight/250)*3
       popup.canvas.ctx.fillRect(x,popup.canvas.height-barHeight/2,barWidth,barHeight);
 
       x += barWidth + 5;
@@ -110,9 +110,14 @@ var popup = {
   }
 }
 
+//chrome.runtime.sendMessage("streamupdate",function(a) {console.log(a)})
+
 popup.init();
-popup.startCapture();
+//popup.startCapture();
 
-
+chrome.tabs.query({active:true},function(tabs) {
+  console.log(tabs);
+  chrome.runtime.sendMessage({message:"streamupdate",data:tabs[0]});
+})
 //var test = {audio:undefined};
 //chrome.tabCapture.capture({audio:true,video:false},function(audio) {test.audio = audio});

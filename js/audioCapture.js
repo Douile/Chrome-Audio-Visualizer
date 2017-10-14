@@ -45,7 +45,7 @@ var audioCapture = {
     }
   },
   startCapture: function() {
-    chrome.tabCapture.capture({audio:true,video:false},function(tab) {
+    chrome.tabCapture.capture({audio:!0,video:!1},function(tab) {
       if (chrome.runtime.lastError != undefined) {
         console.error(chrome.runtime.lastError.message);
         chrome.runtime.lastError = undefined;
