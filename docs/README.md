@@ -1,6 +1,6 @@
 ---
 title: Chrome Audio Visualizer Home
-layout: Default
+layout: Post
 permalink: /index.html
 ---
 
