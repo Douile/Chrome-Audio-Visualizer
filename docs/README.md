@@ -3,6 +3,8 @@
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
+[Source Map](/MAP.md)
+
 ---
 
 Find on the chrome web store [here](https://goo.gl/Xx4vje)
