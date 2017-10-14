@@ -5,7 +5,7 @@
 | File   | Use  |
 | :---:  | :--- |
 | [manifest.json](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/manifest.json) | Sets the configuration for the extension |
-| [popup.html](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/popup.html) | The html file used for [BrowserAction](https://developer.chrome.com/extensions/browserAction) popup. *Not currently being used due to strugles with [activeTab](https://developer.chrome.com/extensions/activeTab) permissions*|
+| [popup.html](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/popup.html) | The html file used for [BrowserAction](https://developer.chrome.com/extensions/browserAction) popup. *Not currently being used due to struggles with [activeTab](https://developer.chrome.com/extensions/activeTab) permissions*|
 | [icon.svg](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/icon.svg) | Vector image for the icon of the extension |
 | [icon**.png](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/icon128.png) | Multiple sizes of icon for use in the extension |
 
@@ -13,7 +13,7 @@
 | File  | Use  |
 | :---: | :--- |
 | [inject.css](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/css/inject.css) | Styling for audio visualizer. Sets canvas as floating overhead |
-| [popup.css](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/css/popup.css) | Styling for popup *Not currently being used due to strugles with [activeTab](https://developer.chrome.com/extensions/activeTab) permissions* |
+| [popup.css](https://github.com/Douile/Chrome-Audio-Visualizer/blob/master/css/popup.css) | Styling for popup *Not currently being used due to struggles with [activeTab](https://developer.chrome.com/extensions/activeTab) permissions* |
 
 # [/js/](#js)
 | File  | Use  |
