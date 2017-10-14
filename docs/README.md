@@ -1,7 +1,7 @@
 ---
 title: Home
 permalink: /index.html
-favicon: /favicon.ico
+icon: /favicon.ico
 ---
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
