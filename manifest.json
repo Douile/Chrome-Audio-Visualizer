@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Audio Visualizer",
-	"version": "1.11",
-	"version_name": "Alpha 11",
+	"version": "1.12",
+	"version_name": "Alpha 12",
 	"description": "An audio visualizer for online music streaming.",
 	"author": "Douile",
 	"icons": {
@@ -15,15 +15,28 @@
 		"tabs",
 		"tabCapture",
 		"activeTab",
+		"contextMenus",
 		"*://*/*"
+	],
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": [
+				"/js/inject.js"
+			],
+			"css": [
+				"/css/inject.css"
+			],
+			"run_at": "document_end"
+		}
 	],
 	"browser_action": {
 		"default_icon": {
 			"128": "icon128.png"
 		},
-		"default_popup": "popup.html"
+		"_default_popup": "popup.html"
 	},
 	"background": {
-		"scripts": ["/js/background.js"]
+		"scripts": ["/js/audioCapture.js","/js/background.js"]
 	}
 }
