@@ -1,6 +1,6 @@
 ---
-Title: Sourcemap
-Permalink: /MAP
+title: Sourcemap
+permalink: /MAP
 ---
 # Source map
 [Home](/Chrome-Audio-Visualizer/)
