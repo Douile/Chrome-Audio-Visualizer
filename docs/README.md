@@ -10,7 +10,7 @@ favicon: /favicon.ico
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
-[Source Map](/MAP)
+[Source Map](MAP)
 
 ---
 
