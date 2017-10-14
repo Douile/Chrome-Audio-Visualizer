@@ -1,6 +1,5 @@
 ---
 title: Home
-layout: Post
 permalink: /index.html
 ---
 
@@ -8,7 +7,7 @@ permalink: /index.html
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
-[Source Map](/MAP.md)
+[Source Map](/MAP)
 
 ---
 
