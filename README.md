@@ -34,7 +34,7 @@ How to use the extension.
 
 *More controls being added*
 
-# How you can help
+# [How you can help](#how-you-can-help)
 It would be great if you would like to help! You can do so by:
 1. [Creating a new Issue](https://github.com/Douile/Chrome-Audio-Visualizer/issues/new)
 2. [Stargazing](https://github.com/Douile/Chrome-Audio-Visualizer/stargazers), [Watching](https://github.com/Douile/Chrome-Audio-Visualizer/watchers) or [Forking](https://github.com/Douile/Chrome-Audio-Visualizer/network#fork-destination-box)
