@@ -18,7 +18,7 @@ Find on the chrome web store [here](https://goo.gl/Xx4vje)
 # Installation
 
 Installation is easy.
-* Go to the [chrome webstore](https://goo.gl/Xx4vje) and press ![Add to Chrome](/GIT/addToChrome.PNG).
+* Go to the [chrome webstore](https://chrome.google.com/webstore/detail/caajjjkijcgmagpdjgadkodpgnmajcej) and press ![Add to Chrome](/GIT/addToChrome.PNG)
 * Developer Mode
   1. Download source code 
   2. Open [chrome extensions](chrome://extensions).
