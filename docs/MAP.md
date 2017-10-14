@@ -1,5 +1,5 @@
 # Source map
-[Home](/)
+[Home](/Chrome-Audio-Visualizer/)
 
 # [/](#)
 | File   | Use |
