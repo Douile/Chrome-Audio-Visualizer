@@ -1,5 +1,6 @@
 ---
 title: Sourcemap
+layout: post
 permalink: /MAP
 ---
 # Source map
