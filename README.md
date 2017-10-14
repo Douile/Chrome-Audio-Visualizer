@@ -15,7 +15,7 @@ Find on the chrome web store [here](https://goo.gl/Xx4vje)
 
 [![screenshot](/GIT/audioVisScreen2.png)](https://goo.gl/Xx4vje)
 
-# Installation
+# [Installation](#installation)
 
 Installation is easy.
 * Go to the [chrome webstore](https://goo.gl/Xx4vje) and press [![Add to Chrome](/GIT/addToChrome.png)](https://goo.gl/Xx4vje)
@@ -26,7 +26,7 @@ Installation is easy.
   4. Click load unpacked extension
   5. Select the folder containing [manifest.json](/manifest.json)
   
-# Usage
+# [Usage](#usage)
 How to use the extension.
 1. Open a tab playing audio
 2. Press the logo in the top right of the screen
