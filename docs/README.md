@@ -4,7 +4,6 @@ layout: post
 permalink: /index.html
 favicon: /favicon.ico
 ---
-
 # [![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
