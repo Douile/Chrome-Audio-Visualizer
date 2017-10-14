@@ -31,6 +31,6 @@ How to use the extension.
 1. Open a tab playing audio
 2. Press the logo in the top right of the screen
 3. Audio visualiztion should start
+
 *More controls being added*
 
-<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/audio-visualizer/caajjjkijcgmagpdjgadkodpgnmajcej">
