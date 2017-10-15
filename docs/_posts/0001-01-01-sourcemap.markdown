@@ -3,7 +3,7 @@ layout: post
 title: "Source map"
 date: 0001-01-04 00:00:01 +0100
 description: A map and description of every file
-img: favicon.ico
+img: icon.svg
 ---
 # Source map
 [Home](/Chrome-Audio-Visualizer/)

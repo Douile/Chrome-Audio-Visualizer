@@ -3,7 +3,7 @@ layout: post
 title: "Home"
 date: 0001-01-01 00:00:01 +0100
 description: Main page
-img:  favicon.ico
+img:  icon.svg
 ---
 # [![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
 
