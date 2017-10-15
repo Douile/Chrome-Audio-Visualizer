@@ -1,13 +1,11 @@
 title: Chrome Audio Visualizer
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  A audio visualizer chrome extension for all you music enjoying needs.
 permalink: ':title/'
 
 # Author Settings
 author: Douile # add your name
-author-img: https://avatars1.githubusercontent.com/u/25043847?s=460&v=4 # add your photo
+author-img: avatar.jpg # add your photo
 about-author: Web Developer # add description
 twitter: # add your Twitter handle
 facebook: # add your Facebook handle
