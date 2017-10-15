@@ -43,6 +43,7 @@ section {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  border-bottom: 1px solid #a0a0a0;
 }
 
 /* Grouping content
