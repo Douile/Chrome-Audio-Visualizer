@@ -1,4 +1,4 @@
-title: Hello, world! I'm David Freeman
+title: Chrome Audio Visualizer
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -6,20 +6,20 @@ description: > # this means to ignore newlines until "baseurl:"
 permalink: ':title/'
 
 # Author Settings
-author: David Freeman # add your name
-author-img: david-freeman.jpg # add your photo
-about-author: I am a web developer focusing on front-end development. Always hungry to keep learning. # add description
+author: Douile # add your name
+author-img: https://avatars1.githubusercontent.com/u/25043847?s=460&v=4 # add your photo
+about-author: Web Developer # add description
 twitter: # add your Twitter handle
 facebook: # add your Facebook handle
-github: artemsheludko # add your Github handle
+github: Douile # add your Github handle
 linkedin: # add your Linkedin handle
 email: # add your Email address
 
 # Disqus
-discus-identifier: mr-brown # add your discus identifier
+discus-identifier: Chrome-Audio-Visualizer # add your discus identifier
 
 # Tracker
-analytics: # Google Analytics
+analytics: UA-98384710-4 # Google Analytics
 
 # Build Settings
 markdown: kramdown
