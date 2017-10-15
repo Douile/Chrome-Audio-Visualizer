@@ -43,9 +43,6 @@ section {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
-  border-bottom-style: groove;
-  border-bottom-width: 1px;
-  border-image: #a0a0a0;
 }
 
 /* Grouping content
@@ -76,7 +73,10 @@ hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   /* 1 */
-  height: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent 0%, #a0a0a0 50%, transparent 100%);
+  background-repeat: no-repeat;
+  border: none;
   /* 1 */
   overflow: visible;
   /* 2 */
