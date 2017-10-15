@@ -6,7 +6,6 @@ description: A map and description of every file
 img: icon.svg
 ---
 # Source map
-[Home](/Chrome-Audio-Visualizer/)
 
 # [/](#)
 | File   | Use  |
