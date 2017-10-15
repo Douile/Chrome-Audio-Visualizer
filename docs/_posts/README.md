@@ -1,15 +1,14 @@
 ---
-title: Home
-permalink: /index.html
-icon: /favicon.ico
+layout: post
+title: "Home"
+date: 000-00-06 00:00:00 +0000
+description: Main page
+img:  favicon.ico
 ---
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-
 # [![logo](https://github.com/Douile/Chrome-Audio-Visualizer/raw/master/icon48.png)](https://goo.gl/Xx4vje) [Chrome Audio Visualizer](#-chrome-audio-visualizerchrome-audio-visualizer)
 
 A chrome extension to provide audio visualization for all audio sources in the browser.
 
-[Source Map](MAP)
 
 ---
 
