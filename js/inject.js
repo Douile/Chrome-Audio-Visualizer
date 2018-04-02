@@ -15,7 +15,7 @@ Object.prototype.trim = function() {
       break;
     }
   }
-  var out = new Array(end);
+  var out = new Uint8Array(end);
   var num = 0;
   for (i=0;i<end;i++) {
     out[num] = this[i];
@@ -23,50 +23,149 @@ Object.prototype.trim = function() {
   }
   return out;
 }
-Object.prototype.averageTrim = function() {
-  var out = new Array(inject.average.length);
-  for (i=0;i<inject.average.length;i++) {
-    out[i] = this[i];
+function averageTrim(array) {
+  var length = inject.average.average()
+  var out = new Uint8Array(length);
+  for (i=0;i<length;i++) {
+    out[i] = array[i];
     if (out[i] == undefined) {
       out[i] = 0;
     }
   }
   return out;
 }
+Array.prototype.average = function() {
+  var total = 0;
+  for (i=0;i<this.length;i++) {
+    total += this[i];
+  }
+  return Math.round(total/this.length)
+}
+Array.prototype.removeOne = function(start) {
+  var out = []
+  for (i=start;i<this.length;i++) {
+    out.push(this[i]);
+  }
+  return out;
+}
+Array.prototype.append = function(data) {
+  var n = this.valueOf();
+  while (n.length > 500) {
+    n = n.removeOne(2);
+  }
+  n.push(data);
+  return n;
+}
+MutationObserver.prototype.watch = function(DOM, options) {
+  if (typeof(this.watching) != object) {
+    this.watching = [];
+  }
+  this.watching.push({DOM: DOM, options: options});
+  this.observe(DOM, options);
+  return 0;
+}
+MutationObserver.prototype.unwatch = function(DOM, options) {
+  this.watching.pop(this.watching.indexOf({DOM: DOM, options:options}));
+  this.disconnect();
+  for (i=0;i<this.watching.length;i++) {
+    this.observe(this.watching[i].DOM,this.watching[i].options);
+  }
+}
+HTMLElement.prototype.toggleAttr = function(name) {
+    value = this.getAttribute(name);
+	out = "false";
+    if (value == "true") {
+        out = "false";
+    } else if (value == "false") {
+        out = "true";
+    }
+	this.setAttribute(name,out);
+  return out;
+}
+
 var inject = {
-  init: function() {
-    chrome.runtime.onMessage.addListener(inject.onMessage);
-  },
-  average: {
-    length: 0,
-    count: 0,
-    total: 0
-  },
-  onMessage: function(message, sender, response) {
-    console.log(message)
-    if (message.message == "update") {
-      inject.audioData = message.data;
-    } else if (message.message == "start") {
-      inject.startVisualizer();
+  listeners: {
+    onMessage: function(message, sender, response) {
+      console.log(message)
+      if (message.message == "update") {
+        inject.audioData = message.data;
+      } else if (message.message == "start") {
+        inject.startVisualizer();
+      } else if (message.message == "who") {
+        response(inject.audioId);
+      } else if (message.message == "you") {
+        inject.audioId = message.id;
+        if (inject.audioId == undefined) {
+          inject.stopRenderF();
+        } else {
+          inject.startVisualizer();
+        }
+      }
+      response(null);
+    },
+    mutations: {
+      __call: function(actions) {
+        for (i=0;i<inject.listeners.actions.length;i++) {
+          for (action in actions) {
+            inject.listeners.actions[i](action);
+          }
+        }
+      },
+      actions: []
     }
   },
+  init: function() {
+    chrome.runtime.onMessage.addListener(inject.listeners.onMessage);
+    inject.listeners.mutations.observer = new MutationObserver(inject.listeners.mutations.__call);
+  },
+  average: [],
   update: function(message) {
-    if (message.success) {
-      inject.audioData = {
-        frequencyData: message.freqData,
-        timeData: message.timeData,
-        bufferSize: message.bufferSize
+    if (message != undefined) {
+      if (message.success) {
+        inject.audioData = {
+          frequencyData: message.freqData,
+          timeData: message.timeData,
+          bufferSize: message.bufferSize
+        }
+      } else {
+        inject.audioData = {
+          frequencyData: {},
+          timeData: {},
+          bufferSize: 0
+        }
       }
     }
   },
   startVisualizer: function() {
     chrome.runtime.sendMessage(null,{message:"update"},inject.update);
+    inject.DOM = {
+      container: document.createElement("div"),
+      settingsBtn: document.createElement("div"),
+      settingsDiv: document.createElement("div")
+    }
+    inject.DOM.container.setAttribute("class","audioVisualizerContainer")
     inject.audioCanvas = document.createElement("canvas");
+    document.body.appendChild(inject.DOM.container);
+    /*
+    inject.DOM.settingsBtn.setAttribute("class","audioVisualizerSettingsBtn");
+    inject.DOM.settingsBtn.setAttribute("style","background-image: url('" + chrome.runtime.getURL("/img/settings.svg") +"');");
+    inject.DOM.settingsBtn.setAttribute("title","Settings");
+    inject.DOM.container.appendChild(inject.DOM.settingsBtn);
+    inject.DOM.settingsBtn.addEventListener("click",function(e) {
+      inject.DOM.settingsDiv.toggleAttr("show");
+    })
+    inject.DOM.settingsDiv.setAttribute("class","audioVisualizerSettingsContainer");
+    inject.DOM.settingsDiv.addEventListener("click",function(e) {
+      console.log(e);
+    })
+    inject.DOM.container.appendChild(inject.DOM.settingsDiv);*/
+    inject.audioCanvas.setAttribute("data-opacity","0.6");
     inject.audioCanvas.setAttribute("class","audioVisualizerRender");
-    document.body.appendChild(inject.audioCanvas);
+    inject.DOM.container.appendChild(inject.audioCanvas);
     inject.audioCanvas.ctx = inject.audioCanvas.getContext("2d");
     inject.audioCanvas.height = 2000;
     inject.audioCanvas.width = 3000;
+    inject.stopRender = false;
     inject.render();
   },
   render: function() {
@@ -74,51 +173,34 @@ var inject = {
       var frame = requestAnimationFrame(inject.render);
     }
     try {
-      chrome.runtime.sendMessage({message:"update"},inject.update)
+      chrome.runtime.sendMessage(null,{message:"update"},inject.update)
     } catch(e) {
       console.error(e);
       inject.stopRenderF();
       return 1;
     }
     if (inject.audioData != undefined) {
-      inject.average.count += 1;
-      inject.average.total += inject.audioData.frequencyData.trim().length;
-      inject.average.length = Math.round(inject.average.total / inject.average.count);
+      inject.average = inject.average.append(inject.audioData.frequencyData.trim().length);
 
       var bufferLength = inject.audioData.bufferSize;
-      var freqData = inject.audioData.frequencyData.averageTrim();
+      var freqData = averageTrim(inject.audioData.frequencyData)
       var timeData =inject.audioData.timeData;
 
       inject.audioCanvas.ctx.clearRect(0,0,inject.audioCanvas.width,inject.audioCanvas.height);
-
-      var barWidth = ((inject.audioCanvas.width - (5*(freqData.length+1))) / freqData.length)
-      var barHeight;
-      var x = 0;
-      var average = 0;
-      for (var i=1;i<bufferLength;i++) {
-        x += 2.5;
-        barHeight = Math.round(freqData[i]);
-        inject.audioCanvas.ctx.fillStyle = "rgb(" + (barHeight+100) + "," + (255-barHeight) + ",50)";
-        barHeight = inject.audioCanvas.height*(barHeight/250);
-        inject.audioCanvas.ctx.fillRect(x,inject.audioCanvas.height-barHeight/2,barWidth,barHeight);
-
-        x += barWidth + 2.5;
+      for (var i=0;i<visualizations.length;i++) {
+        if (visualizations[i].active == true) {
+          visualizations[i].call(inject.audioCanvas.ctx,freqData,timeData,inject.audioCanvas.width,inject.audioCanvas.height,bufferLength)
+        }
       }
-      inject.audioCanvas.ctx.lineWidth = 10;
-      inject.audioCanvas.ctx.strokeStyle = "rgb(255,255,255)";
-      inject.audioCanvas.ctx.beginPath();
-      for (var a = inject.audioCanvas.width / bufferLength, b = 0, f = 0; f < bufferLength; f++) {
-          var l = timeData[f] / 128 * inject.audioCanvas.height / 2;
-          0 === f ? inject.audioCanvas.ctx.moveTo(b, l) : inject.audioCanvas.ctx.lineTo(b, l);
-          b += a
-      }
-      inject.audioCanvas.ctx.lineTo(inject.audioCanvas.width+20, inject.audioCanvas.height/2);
-      inject.audioCanvas.ctx.stroke();
     }
   },
   stopRenderF: function() {
     inject.stopRender = true;
-    inject.audioCanvas.remove();
-  }
+    if (inject.audioCanvas) {
+      inject.audioCanvas.remove();
+    }
+  },
+  audioId: undefined
 }
+
 inject.init();

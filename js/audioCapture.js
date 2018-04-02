@@ -1,5 +1,5 @@
-var audioCapture = {
-  AudioObject: function(tabCapture) {
+class AudioObject {
+  constructor(tabCapture) {
     this.capture = tabCapture;
     this.audioContext = new AudioContext();
     this.audioStream = this.audioContext.createMediaStreamSource(this.capture);
@@ -14,21 +14,29 @@ var audioCapture = {
     }
     this.data.frequencyData = new Uint8Array(this.data.bufferSize);
     this.data.timeData = new Uint8Array(this.data.bufferSize);
+  }
+  update() {
+    this.audioAnalyser.getByteFrequencyData(this.data.frequencyData);
+    this.audioAnalyser.getByteTimeDomainData(this.data.timeData);
+  }
+  close() {
+    var tracks = this.capture.getTracks();
+    tracks.forEach((track)=>{
+      track.stop();
+    });
+    this.audioContext.close().then(function() {
+      delete this.audioContext;
+    }).bind(this);
+  }
+  closeRaw(capture) {
+    var tracks = capture.getTracks();
+    tracks.forEach((track)=>{
+      track.stop();
+    });
+  }
 
-    this.update = function() {
-      this.audioAnalyser.getByteFrequencyData(this.data.frequencyData);
-      this.audioAnalyser.getByteTimeDomainData(this.data.timeData);
-    }
-    this.close = function() {
-      streams = this.capture.getAudioTracks();
-      for (i=0;i<streams.length;i++) {
-        streams[i].stop();
-      }
-      return 0;
-    }
-
-    return this;
-  },
+}
+var audioCapture = {
   captures: {
     content: [],
     add: function(audioObject) {
@@ -42,16 +50,25 @@ var audioCapture = {
         audioCapture.captures.onAdd.listeners.push(listener);
       },
       listeners: []
+    },
+    getById: function(id) {
+      for (i=0;i<audioCapture.captures.content.length;i++) {
+        if (audioCapture.captures.content[i].capture.id == id) {
+          return audioCapture.captures.content[i];
+        }
+      }
+      return undefined;
     }
   },
   startCapture: function() {
     chrome.tabCapture.capture({audio:!0,video:!1},function(tab) {
       if (chrome.runtime.lastError != undefined) {
-        console.error(chrome.runtime.lastError.message);
+        error = chrome.runtime.lastError.message
         chrome.runtime.lastError = undefined;
-        return 1;
+        return error;
       }
-      audioCapture.captures.add(new audioCapture.AudioObject(tab));
+      audioCapture.captures.add(new AudioObject(tab));
+      return undefined;
     })
   }
 }

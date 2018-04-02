@@ -1,0 +1,34 @@
+.options-container {
+  display: inline-block;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.options-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  text-decoration: underline;
+}
+.options-option {
+  display: inline-block;
+  width: 100%;
+  padding: 2px;
+}
+.options-option-name {
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  font-size: 110%;
+}
+.options-option-description {
+  display: inline-block;
+  width: 100%;
+  white-space: pre;
+  font-size: 80%;
+}
+* {
+  box-sizing: border-box;
+  font-family: arial;
+}

@@ -1,0 +1,11 @@
+{
+  "ext_name": {
+    "message": "Audio Visualizer"
+  },
+  "ext_desc": {
+    "message": "An audio visualizer for online music streaming."
+  },
+  "options_settings": {
+    "message": "Options"
+  }
+}
