@@ -51,6 +51,6 @@ It would be great if you would like to help! You can do so by:
 
 # [Releases](#releases)
 
-[Alpha 19](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.19)
-[Alpha 12](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.12)
-[Alpha 11](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.11)
+* [Alpha 19](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.19)
+* [Alpha 12](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.12)
+* [Alpha 11](https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.11)
