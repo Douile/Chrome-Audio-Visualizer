@@ -1,14 +1,15 @@
 {
 	"manifest_version": 2,
-	"name": "Audio Visualizer",
-	"version": "1.12",
-	"version_name": "Alpha 12",
-	"description": "An audio visualizer for online music streaming.",
+	"default_locale": "en",
+	"name": "__MSG_ext_name__",
+	"version": "1.19",
+	"description": "__MSG_ext_desc__",
+	"short_name": "AV",
 	"author": "Douile",
 	"icons": {
-		"16": "icon16.png",
-		"48": "icon48.png",
-		"128": "icon128.png"
+		"16": "/img/iconon16.png",
+		"48": "/img/iconon48.png",
+		"128": "/img/iconon128.png"
 	},
 	"permissions": [
 		"storage",
@@ -16,12 +17,15 @@
 		"tabCapture",
 		"activeTab",
 		"contextMenus",
-		"*://*/*"
+		"*://*/*",
+		"notifications"
 	],
 	"content_scripts": [
 		{
 			"matches": ["*://*/*"],
 			"js": [
+				"/js/storage.js",
+				"/js/visualizationsdata.js",
 				"/js/inject.js"
 			],
 			"css": [
@@ -32,11 +36,21 @@
 	],
 	"browser_action": {
 		"default_icon": {
-			"128": "icon128.png"
-		},
-		"_default_popup": "popup.html"
+			"128": "/img/iconoff128.png"
+		}
 	},
 	"background": {
-		"scripts": ["/js/audioCapture.js","/js/background.js"]
-	}
+		"scripts": ["/js/audioCapture.js","/js/background.js"],
+		"persistent": true
+	},
+	"options_ui": {
+		"chrome_style": true,
+		"page": "options.html"
+	},
+	"storage": {
+		"managed_schema": "storageschema.json"
+	},
+	"web_accessible_resources": [
+		"/img/settings.svg"
+	]
 }
