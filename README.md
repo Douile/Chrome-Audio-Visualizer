@@ -46,3 +46,9 @@ It would be great if you would like to help! You can do so by:
 ---
 
 [Github.io](https://douile.github.io/Chrome-Audio-Visualizer/)
+
+---
+
+# [Releases](#releases)
+
+https://github.com/Douile/Chrome-Audio-Visualizer/releases/tag/1.19
