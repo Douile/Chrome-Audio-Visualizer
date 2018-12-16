@@ -7,11 +7,11 @@ permalink: ':title/'
 author: Douile # add your name
 author-img: avatar.jpg # add your photo
 about-author: Web Developer # add description
-twitter: # add your Twitter handle
-facebook: # add your Facebook handle
+#twitter: # add your Twitter handle
+#facebook: # add your Facebook handle
 github: Douile # add your Github handle
-linkedin: # add your Linkedin handle
-email: # add your Email address
+#linkedin: # add your Linkedin handle
+#email: # add your Email address
 
 # Disqus
 discus-identifier: Chrome-Audio-Visualizer # add your discus identifier
