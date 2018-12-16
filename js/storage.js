@@ -23,8 +23,13 @@ var storage = {
     return this.data[key];
   },
   set: function(key,value) {
-    if (this.data[key] != undefined) {
-      this.data[key].set(value);
+    if (this.data[key] !== undefined) {
+      try {
+        this.data[key].set(value);
+      } catch(e) {
+        console.warn(e);
+        this.data[key] = new StorageItem(value,key);
+      }
     } else {
       this.add(key,value);
     }
@@ -65,17 +70,24 @@ var storage = {
     chrome.storage[_storagearea].get((d)=>{console.log(d)});
   },
   defaults: function() {
-    if (this.get("visualizations") == undefined) {
-      this.set("visualizations",{bars:true,line:true});
-    } else {
-      var value = this.get("visualizations");
-      if (value["bars"] == undefined) {
-        value["bars"] = true;
-        this.set("visualizations",value);
-      }
-      if (value["line"] == undefined) {
-        value["line"] = true;
-        this.set("visualizations",value);
+    // if (this.get("visualizations") == undefined) {
+    //   this.set("visualizations",{bars:true,line:true});
+    // } else {
+    //   var value = this.get("visualizations");
+    //   if (value["bars"] == undefined) {
+    //     value["bars"] = true;
+    //     this.set("visualizations",value);
+    //   }
+    //   if (value["line"] == undefined) {
+    //     value["line"] = true;
+    //     this.set("visualizations",value);
+    //   }
+    // }
+    var values = ['visualizations.bars','visualizations.line'];
+    for (var i=0;i<values.length;i++) {
+      let value = values[i];
+      if (this.get(value) === undefined) {
+        this.set(value,true);
       }
     }
   },

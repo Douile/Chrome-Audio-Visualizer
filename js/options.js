@@ -1,3 +1,5 @@
+const _storagearea = 'local';
+
 HTMLElement.prototype.appendChildren = function() {
   for (var i=0;i<arguments.length;i++) {
     if (arguments[i] instanceof HTMLElement) {
@@ -8,6 +10,21 @@ HTMLElement.prototype.appendChildren = function() {
 HTMLInputElement.prototype.check = function(value) {
   this.checked = value;
 }
+var storage {
+  'get': function(key) {
+    return new Promise((resolve,reject) => {
+      chrome.storage[_storagearea].get(key,(items) => {
+        let error = chrome.runtime.lastError;
+        if (error === undefined) {
+          reject(error);
+        } else {
+          resolve(items);
+        }
+      })
+    })
+  }
+}
+
 function addSections(parent) {
   for (var i=1;i<arguments.length;i++) {
     if (arguments[i] instanceof OptionSection) {
@@ -72,22 +89,25 @@ class Option {
       case "number":
         this.input = createElement("input",{class:"options-option-input",type:"number"});
         this.input.value = value;
+        this.input.addEventListener("keyup",this.changeHandler);
         break;
       case "bool":
         this.input = createElement("input",{class:"options-option-input",type:"checkbox"});
-        this.input.check(value);
+        this.input.checked = value;
+        this.input.addEventListener("click",this.changeHandler);
         break;
       default:
         this.input = createElement("input",{class:"options-option-input",type:"text"});
         this.input.value = value;
+        this.input.addEventListener("keyup",this.changeHandler);
         break;
     }
-    this.input.addEventListener("change",this.changeHandler)
     this.container.appendChildren(this.name,this.description,this.input);
     this.listeners = [];
     inputlisteners.push(this.listeners);
     this.listenersid = inputlisteners.length-1;
     this.input.setAttribute("data-listeners",this.listenersid);
+    console.log(`Initialized option ${name} with value ${value}`);
   }
   add(parent) {
     this.parent = parent;
@@ -118,21 +138,22 @@ function initialize() {
   var visualizations = new OptionSection("Visualizations");
   var additional = new OptionSection("Additonal");
   addSections(document.body,visualizations,additional);
-  var settings = storage.get("visualizations");
   var bars = new OptionSection("Bars",2);
-  var barsactive = new Option("Active","Set whether to show this visualization","bool",settings["bars"]);
+  var barsactive = new Option("Active","Set whether to show this visualization","bool",storage.get("visualizations.bars"));
   barsactive.addListener(function(value) {
-    var data = storage.get("visualizations");
-    data["bars"] = value;
-    storage.set("visualizations",data);
+    // var data = storage.get("visualizations");
+    // data["bars"] = value;
+    // var data = {'bars':value};
+    storage.set("visualizations.bars",value);
   })
   bars.addChild(barsactive);
   var line = new OptionSection("Line",2);
-  var lineactive = new Option("Active","Set whether to show this visualization","bool",settings["line"]);
+  var lineactive = new Option("Active","Set whether to show this visualization","bool",storage.get("visualizations.line"));
   lineactive.addListener(function(value) {
-    var data = storage.get("visualizations");
-    data["line"] = value;
-    storage.set("visualizations",data);
+    // var data = storage.get("visualizations");
+    // data["line"] = value;
+    // var data = {'line':value};
+    storage.set("visualizations.line",value);
   })
   line.addChild(lineactive);
   addSections(visualizations.innerContainer,bars,line);
