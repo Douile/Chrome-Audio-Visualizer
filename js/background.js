@@ -24,9 +24,9 @@ var background = {
       try {
         tracks = audioCapture.captures.content[i].close();
       } catch(e) {
-        console.warn(e);
+        console.warn("Unable to close track",e);
       }
-      console.log("closed",id);
+      console.log("Closed",id);
     }
     if (background.activeId == a.id) {
       background.activeId = null;

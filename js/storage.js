@@ -27,7 +27,7 @@ var storage = {
       try {
         this.data[key].set(value);
       } catch(e) {
-        console.warn(e);
+        // console.warn(e);
         this.data[key] = new StorageItem(value,key);
       }
     } else {
