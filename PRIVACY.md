@@ -2,7 +2,7 @@
 _This is included in order to comply with [chrome program policy](https://developer.chrome.com/webstore/program_policies#userdata)_
 
 ## tl;dr
-This extension does not exfiltrate any data from the user's browser any and all information collected by the extension is stored using the local and sync browser storage APIs which are controlled by google. The developers of the extension do not provide guarantee that data collected and communicated within the extension will not be collected by pages visited, the browser, other applications or other extensions.
+This extension does not exfiltrate any data from the user's browser any and all information collected by the extension is stored using the local and sync browser storage APIs which are controlled by google. The developers of the extension do not provide guarantee that data collected and communicated within the extension will not be collected by pages visited, the browser, other applications or other extensions. We have no control over data collected by Google and Github when visiting the repository on github and store page listing on chrome webstore.
 
 Privacy Policy
 ==============
