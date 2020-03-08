@@ -11,7 +11,7 @@ Last updated: March 08, 2020
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
-We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy is maintained by the [Free Privacy Policy Generator](https://www.freeprivacypolicy.com/free-privacy-policy-generator/).
+We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.
 
 Interpretation and Definitions
 ==============================
@@ -81,7 +81,7 @@ We use both session and persistent Cookies for the purposes set out below:
 
     Type: Session Cookies
 
-    Administered by: Us
+    Administered by: Google, Github
 
     Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.
 
@@ -89,7 +89,7 @@ We use both session and persistent Cookies for the purposes set out below:
 
     Type: Persistent Cookies
 
-    Administered by: Us
+    Administered by: Google, Github
 
     Purpose: These Cookies identify if users have accepted the use of cookies on the Website.
 
@@ -97,7 +97,7 @@ We use both session and persistent Cookies for the purposes set out below:
 
     Type: Persistent Cookies
 
-    Administered by: Us
+    Administered by: Google, Github
 
     Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.
 
